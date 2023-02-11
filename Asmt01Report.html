@@ -740,19 +740,75 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <h2 class="mume-header" id="-1-what-is-the-command-to-determine-the-kernel-version-of-your-os-please-write-the-command-and-its-output">1. What is the command to determine the kernel version of your OS? Please write the command and its output.</h2>
 
-<h2 class="mume-header" id="-2-what-is-the-command-to-determine-the-current-user-logged-in-please-write-the-command-and-its-output">2. What is the command to determine the current user logged in? Please write the command and its output.</h2>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">uname</span> -v
+<span class="token comment">#63-Ubuntu SMP Thu Nov 24 13:48:31 UTC 2022</span>
+</pre><h2 class="mume-header" id="-2-what-is-the-command-to-determine-the-current-user-logged-in-please-write-the-command-and-its-output">2. What is the command to determine the current user logged in? Please write the command and its output.</h2>
 
-<h2 class="mume-header" id="-3-what-is-the-linux-command-or-commands-to-list-all-user-accounts-on-a-linux-system-only-user-account-names-should-be-shown">3. What is the Linux command or commands to list all user accounts on a Linux system? ONLY user account names should be shown!</h2>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">whoami</span>
+ubuntu
+</pre><h2 class="mume-header" id="-3-what-is-the-linux-command-or-commands-to-list-all-user-accounts-on-a-linux-system-only-user-account-names-should-be-shown">3. What is the Linux command or commands to list all user accounts on a Linux system? ONLY user account names should be shown!</h2>
 
-<h2 class="mume-header" id="-4-using-your-answer-from-the-previous-question-what-would-be-the-command-or-commands-to-show-the-the-list-of-users-as-a-comma-separated-list">4. Using your answer from the previous question, what would be the command or commands to show the the list of users as a comma separated list.</h2>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">awk</span> -F: <span class="token string">&apos;{print $1}&apos;</span> /etc/passwd
+root
+daemon
+bin
+sys
+<span class="token function">sync</span>
+games
+<span class="token function">man</span>
+lp
+mail
+news
+uucp
+proxy
+www-data
+backup
+list
+irc
+gnats
+nobody
+systemd-network
+systemd-resolve
+messagebus
+systemd-timesync
+syslog
+_apt
+tss
+uuidd
+tcpdump
+sshd
+pollinate
+landscape
+fwupd-refresh
+ubuntu
+lxd
+</pre><h2 class="mume-header" id="-4-using-your-answer-from-the-previous-question-what-would-be-the-command-or-commands-to-show-the-the-list-of-users-as-a-comma-separated-list">4. Using your answer from the previous question, what would be the command or commands to show the the list of users as a comma separated list.</h2>
 
 <p>i. You may need to use the | (pipe command) to link two commands together.</p>
-<h2 class="mume-header" id="-5-what-is-the-command-or-commands-that-will-show-you-the-last-15-lines-of-the-varlogkernlog-file-please-write-the-commands-and-copy-the-output">5. What is the command or commands that will show you the last 15 lines of the /var/log/kern.log file? Please write the commands and copy the output.</h2>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">awk</span> -v <span class="token assign-left variable">ORS</span><span class="token operator">=</span><span class="token string">&apos;,&apos;</span> -F: <span class="token string">&apos;{print $1}&apos;</span> /etc/passwd
+root,daemon,bin,sys,sync,games,man,lp,mail,news,uucp,proxy,www-data,backup,list,irc,gnats,nobody,systemd-network,systemd-resolve,messagebus,systemd-timesync,syslog,_apt,tss,uuidd,tcpdump,sshd,pollinate,landscape,fwupd-refresh,ubuntu,lxd,
+</pre><h2 class="mume-header" id="-5-what-is-the-command-or-commands-that-will-show-you-the-last-15-lines-of-the-varlogkernlog-file-please-write-the-commands-and-copy-the-output">5. What is the command or commands that will show you the last 15 lines of the /var/log/kern.log file? Please write the commands and copy the output.</h2>
 
 <p>a. If your system does not have a kern.log, simply print which ever file in your<br>
 system stores system logs.<br>
 b. Note, WSL2 may not have a kern.log file at all.</p>
-<h2 class="mume-header" id="-6-what-is-the-command-or-commands-that-will-show-you-all-the-login-attempts-for-your-username-please-write-the-commands-and-copy-the-output">6. What is the command or commands that will show you all the login attempts for your username? Please write the commands and copy the output.</h2>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">head</span> -15 /var/log/kern.log
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> Booting Linux on physical CPU 0x0000000000 <span class="token punctuation">[</span>0x410fd083<span class="token punctuation">]</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> Linux version <span class="token number">5.15</span>.0-57-generic <span class="token punctuation">(</span>buildd@bos02-arm64-057<span class="token punctuation">)</span> <span class="token punctuation">(</span>gcc <span class="token punctuation">(</span>Ubuntu <span class="token number">11.3</span>.0-1ubuntu1~22.04<span class="token punctuation">)</span> <span class="token number">11.3</span>.0, GNU ld <span class="token punctuation">(</span>GNU Binutils <span class="token keyword keyword-for">for</span> Ubuntu<span class="token punctuation">)</span> <span class="token number">2.38</span><span class="token punctuation">)</span> <span class="token comment">#63-Ubuntu SMP Thu Nov 24 13:48:31 UTC 2022 (Ubuntu 5.15.0-57.63-generic 5.15.74)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> efi: EFI v2.70 by EDK II
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> efi: SMBIOS <span class="token number">3.0</span><span class="token operator">=</span>0x7f700000 <span class="token assign-left variable">MEMATTR</span><span class="token operator">=</span>0x7cf05698 ACPI <span class="token number">2.0</span><span class="token operator">=</span>0x7bf70018 <span class="token assign-left variable">MOKvar</span><span class="token operator">=</span>0x7ceef000 <span class="token assign-left variable">MEMRESERVE</span><span class="token operator">=</span>0x7c371118
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> secureboot: Secure boot disabled
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: Early table checksum verification disabled
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: RSDP 0x000000007BF70018 000024 <span class="token punctuation">(</span>v02 BOCHS <span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: XSDT 0x000000007BF7FE98 000064 <span class="token punctuation">(</span>v01 BOCHS  BXPC     00000001      01000013<span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: FACP 0x000000007BF7FA98 00010C <span class="token punctuation">(</span>v05 BOCHS  BXPC     00000001 BXPC 00000001<span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: DSDT 0x000000007BF77518 00141A <span class="token punctuation">(</span>v02 BOCHS  BXPC     00000001 BXPC 00000001<span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: APIC 0x000000007BF7FC18 0000A8 <span class="token punctuation">(</span>v03 BOCHS  BXPC     00000001 BXPC 00000001<span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: PPTT 0x000000007BF7FD18 000060 <span class="token punctuation">(</span>v02 BOCHS  BXPC     00000001 BXPC 00000001<span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: GTDT 0x000000007BF7D898 000060 <span class="token punctuation">(</span>v02 BOCHS  BXPC     00000001 BXPC 00000001<span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: MCFG 0x000000007BF7FE18 00003C <span class="token punctuation">(</span>v01 BOCHS  BXPC     00000001 BXPC 00000001<span class="token punctuation">)</span>
+Feb  <span class="token number">9</span> 04:43:15 primary kernel: <span class="token punctuation">[</span>    <span class="token number">0.000000</span><span class="token punctuation">]</span> ACPI: SPCR 0x000000007BF7FF98 000050 <span class="token punctuation">(</span>v02 BOCHS  BXPC     00000001 BXPC 00000001<span class="token punctuation">)</span>
+</pre><h2 class="mume-header" id="-6-what-is-the-command-or-commands-that-will-show-you-all-the-login-attempts-for-your-username-please-write-the-commands-and-copy-the-output">6. What is the command or commands that will show you all the login attempts for your username? Please write the commands and copy the output.</h2>
 
 <h2 class="mume-header" id="-7-using-the-dmesg-command-show-only-the-messages-relating-to-warnings-and-errors-also-ensure-the-output-is-using-a-human-readable-time-format-to-verify-that-only-error-and-warning-messages-are-being-show-what-option-of-dmesg-would-you-use-show-both-commands-that-were-used">7. Using the dmesg command, show only the messages relating to warnings and errors. Also ensure the output is using a human readable time format. To verify that only error and warning messages are being show what option of dmesg would you use? Show both commands that were used.</h2>
 
