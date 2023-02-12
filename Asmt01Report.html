@@ -786,9 +786,29 @@ tmpfs              97M  <span class="token number">4</span>.0K   97M   <span cla
 :/Users/mosguinz 1000G     <span class="token number">0</span> 1000G   <span class="token number">0</span>% /home/ubuntu/Home
 </pre><h2 class="mume-header" id="-9-what-is-the-command-or-commands-that-would-list-the-contents-of-the-varlog-directory-in-alphanumeric-order-list-the-command-and-its-output">9. What is the command or commands that would list the contents of the /var/log directory in alphanumeric order? List the command and its output.</h2>
 
-<h2 class="mume-header" id="-10-what-is-the-command-or-commands-that-would-list-all-the-empty-files-or-folders-in-your-users-home-directory">10. What is the command or commands that would list all the empty files or folders in your user&#x2019;s home directory?</h2>
+<p>Files are listed in alphanumeric order by default.</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">ls</span> /var/log
+alternatives.log  auth.log  cloud-init-output.log  dist-upgrade  dpkg.log  kern.log   lastlog  syslog                      unattended-upgrades
+<span class="token function">apt</span>               btmp      cloud-init.log         <span class="token function">dmesg</span>         journal   landscape  private  ubuntu-advantage-timer.log  wtmp
+</pre><p><code>-l</code> option can be used for a more detailed, list format. <code>head -5</code> is used here for brevity.</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">ls</span> -l /var/log <span class="token operator">|</span> <span class="token function">head</span> -5
+total <span class="token number">440</span>
+-rw-r--r--  <span class="token number">1</span> root      root              <span class="token number">6862</span> Feb <span class="token number">10</span> 06:50 alternatives.log
+drwxr-xr-x  <span class="token number">2</span> root      root              <span class="token number">4096</span> Feb <span class="token number">10</span> 06:51 <span class="token function">apt</span>
+-rw-r-----  <span class="token number">1</span> syslog    adm              <span class="token number">26695</span> Feb <span class="token number">11</span> <span class="token number">15</span>:59 auth.log
+-rw-rw----  <span class="token number">1</span> root      utmp                 <span class="token number">0</span> Jan  <span class="token number">6</span> <span class="token number">18</span>:15 btmp
+</pre><h2 class="mume-header" id="-10-what-is-the-command-or-commands-that-would-list-all-the-empty-files-or-folders-in-your-users-home-directory">10. What is the command or commands that would list all the empty files or folders in your user&#x2019;s home directory?</h2>
 
-<h2 class="mume-header" id="-11-what-is-the-command-or-commands-used-to-list-the-files-in-varlog-in-order-of-their-size-list-the-command-and-its-output">11. What is the command or commands used to list the files in /var/log in order of their size? List the command and its output.</h2>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">find</span> ~ -empty
+/home/ubuntu/.config/procps
+/home/ubuntu/snap/multipass-sshfs/147
+/home/ubuntu/snap/multipass-sshfs/common
+/home/ubuntu/Home/.android/avd
+/home/ubuntu/Home/.config/joplin-desktop/cache
+</pre><p><code>-maxdepth</code> may be used to limit search to the home folder only.</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">find</span> ~ -maxdepth <span class="token number">1</span> -empty
+/home/ubuntu/.sudo_as_admin_successful
+</pre><h2 class="mume-header" id="-11-what-is-the-command-or-commands-used-to-list-the-files-in-varlog-in-order-of-their-size-list-the-command-and-its-output">11. What is the command or commands used to list the files in /var/log in order of their size? List the command and its output.</h2>
 
 <h2 class="mume-header" id="-12-what-is-the-command-or-commands-used-to-list-the-top-10-file-who-use-the-most-disk-space-what-is-this-commands-and-show-its-output">12. What is the command or commands used to list the top 10 file who use the most disk space? What is this command(s) and show its output?</h2>
 

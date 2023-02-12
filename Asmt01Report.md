@@ -151,7 +151,43 @@ tmpfs              97M  4.0K   97M   1% /run/user/1000
 ```
 
 ## 9. What is the command or commands that would list the contents of the /var/log directory in alphanumeric order? List the command and its output.
+
+Files are listed in alphanumeric order by default.
+
+```sh
+ubuntu@primary:~$ ls /var/log
+alternatives.log  auth.log  cloud-init-output.log  dist-upgrade  dpkg.log  kern.log   lastlog  syslog                      unattended-upgrades
+apt               btmp      cloud-init.log         dmesg         journal   landscape  private  ubuntu-advantage-timer.log  wtmp
+```
+
+`-l` option can be used for a more detailed, list format. `head -5` is used here for brevity.
+
+```sh
+ubuntu@primary:~$ ls -l /var/log | head -5
+total 440
+-rw-r--r--  1 root      root              6862 Feb 10 06:50 alternatives.log
+drwxr-xr-x  2 root      root              4096 Feb 10 06:51 apt
+-rw-r-----  1 syslog    adm              26695 Feb 11 15:59 auth.log
+-rw-rw----  1 root      utmp                 0 Jan  6 18:15 btmp
+```
+
 ## 10. What is the command or commands that would list all the empty files or folders in your user’s home directory?
+
+```sh
+ubuntu@primary:~$ find ~ -empty
+/home/ubuntu/.config/procps
+/home/ubuntu/snap/multipass-sshfs/147
+/home/ubuntu/snap/multipass-sshfs/common
+/home/ubuntu/Home/.android/avd
+/home/ubuntu/Home/.config/joplin-desktop/cache
+```
+
+`-maxdepth` may be used to limit search to the home folder only.
+```sh
+ubuntu@primary:~$ find ~ -maxdepth 1 -empty
+/home/ubuntu/.sudo_as_admin_successful
+```
+
 ## 11. What is the command or commands used to list the files in /var/log in order of their size? List the command and its output.
 ## 12. What is the command or commands used to list the top 10 file who use the most disk space? What is this command(s) and show its output?
 ## 13.  What is the command that will show you the last 15 commands you have typed? List the command and its output.
