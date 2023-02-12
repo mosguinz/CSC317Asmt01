@@ -1,11 +1,12 @@
 ---
 export_on_save:
     html: true
+print_background: true
 puppeteer:
     format: "Letter"
     timeout: 3000
 chrome:
-    printBackground: true
+    printBackground: false
 ---
 
 # Assignment 01
@@ -97,8 +98,58 @@ Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: SPCR 0x000000007BF7FF98 000
 ```
 
 ## 6. What is the command or commands that will show you all the login attempts for your username? Please write the commands and copy the output.
+
+
+
 ## 7. Using the dmesg command, show only the messages relating to warnings and errors. Also ensure the output is using a human readable time format. To verify that only error and warning messages are being show what option of dmesg would you use? Show both commands that were used.
+
+* `-H` to to enable human-readable input.
+* `-x` to "verify that only error and warning messages are being [shown]"
+* `-l` with argument `warn,err` to "show only the messages relating to warnings and errors."
+
+```sh
+ubuntu@primary:~$ sudo dmesg -H -x -l warn,err
+kern  :warn  : [Feb 9 18:45] ACPI: SRAT not present
+kern  :warn  : [  +0.000000] KASLR disabled due to lack of seed
+kern  :warn  : [  +0.123766] SPI driver altr_a10sr has no spi_device_id for altr,a10sr
+kern  :warn  : [  +0.002636] device-mapper: core: CONFIG_IMA_DISABLE_HTABLE is disabled. Duplicate IMA measurements will not be recorded in the IMA lo>
+kern  :warn  : [  +0.455917] sd 0:0:0:0: Power-on or device reset occurred
+kern  :warn  : [  +0.010839] GPT:Primary header thinks Alt. header is not at the end of the disk.
+kern  :warn  : [  +0.000202] GPT:4612095 != 10485759
+kern  :warn  : [  +0.000093] GPT:Alternate GPT header not at the end of the disk.
+kern  :warn  : [  +0.000160] GPT:4612095 != 10485759
+kern  :warn  : [  +0.000093] GPT: Use GNU Parted to correct GPT errors.
+kern  :warn  : [ +25.082931] kauditd_printk_skb: 19 callbacks suppressed
+kern  :warn  : [Feb10 01:31] kauditd_printk_skb: 24 callbacks suppressed
+kern  :warn  : [Feb10 08:48] hrtimer: interrupt took 40848802 ns
+```
+
+Example without the `-l` argument to specify level. First few lines shows that the logs are of `info` and `notice` levels.
+
+```sh
+ubuntu@primary:~$ sudo dmesg -H -x
+kern  :info  : [Feb 9 18:45] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+kern  :notice: [  +0.000000] Linux version 5.15.0-57-generic (buildd@bos02-arm64-057) (gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils>
+kern  :info  : [  +0.000000] efi: EFI v2.70 by EDK II
+kern  :info  : [  +0.000000] efi: SMBIOS 3.0=0x7f700000 MEMATTR=0x7cf05698 ACPI 2.0=0x7bf70018 MOKvar=0x7ceef000 MEMRESERVE=0x7c371118
+kern  :info  : [  +0.000000] secureboot: Secure boot disabled
+kern  :info  : [  +0.000000] ACPI: Early table checksum verification disabled
+```
+
 ## 8. What command would you use to display free disk space? List the command and its output.
+
+```sh
+ubuntu@primary:~$ df -h
+Filesystem        Size  Used Avail Use% Mounted on
+tmpfs              97M  1.2M   96M   2% /run
+/dev/sda1         4.7G  2.1G  2.6G  45% /
+tmpfs             482M     0  482M   0% /dev/shm
+tmpfs             5.0M     0  5.0M   0% /run/lock
+/dev/sda15         98M  5.1M   93M   6% /boot/efi
+tmpfs              97M  4.0K   97M   1% /run/user/1000
+:/Users/mosguinz 1000G     0 1000G   0% /home/ubuntu/Home
+```
+
 ## 9. What is the command or commands that would list the contents of the /var/log directory in alphanumeric order? List the command and its output.
 ## 10. What is the command or commands that would list all the empty files or folders in your user’s home directory?
 ## 11. What is the command or commands used to list the files in /var/log in order of their size? List the command and its output.
