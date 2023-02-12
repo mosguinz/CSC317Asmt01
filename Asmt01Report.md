@@ -195,6 +195,57 @@ ubuntu@primary:~$ find ~ -maxdepth 1 -empty
 ```
 
 ## 11. What is the command or commands used to list the files in /var/log in order of their size? List the command and its output.
+
+Using `ls`:
+* `-p` appends `/` to directories (to filter them out using `grep`).
+* `-l` to display log listing format (to see size).
+* `-S` to list the files by size.
+* `-h` to display size in human-readable format (optional).
+
+Piped to `grep` with `-v` to select lines that do not contain `/` to print files only.
+
+```sh
+ubuntu@primary:~$ ls -plSh /var/log | grep -v /
+total 440K
+-rw-rw-r--  1 root      utmp            290K Feb 11 15:12 lastlog
+-rw-r-----  1 syslog    adm             120K Feb 11 22:47 syslog
+-rw-r--r--  1 syslog    adm             108K Feb  8 20:43 cloud-init.log
+-rw-r-----  1 syslog    adm              45K Feb  9 12:00 kern.log
+-rw-r--r--  1 root      root             36K Feb 10 06:51 dpkg.log
+-rw-r-----  1 root      adm              33K Feb  8 20:43 dmesg
+-rw-r-----  1 syslog    adm              27K Feb 11 22:47 auth.log
+-rw-rw-r--  1 root      utmp            7.5K Feb 11 15:12 wtmp
+-rw-r--r--  1 root      root            6.8K Feb 10 06:50 alternatives.log
+-rw-r-----  1 root      adm             4.7K Feb  8 20:43 cloud-init-output.log
+-rw-r--r--  1 root      root            2.6K Feb 11 22:44 ubuntu-advantage-timer.log
+-rw-rw----  1 root      utmp               0 Jan  6 18:15 btmp
+```
+
 ## 12. What is the command or commands used to list the top 10 file who use the most disk space? What is this command(s) and show its output?
+
 ## 13.  What is the command that will show you the last 15 commands you have typed? List the command and its output.
+
+```sh
+ubuntu@primary:~$ history 15
+  100  man grep
+  101  man du
+  102  du -a
+  103  man sort
+  104  du -a | sort -h | head -10
+  105  du -a | sort -hr | head -10
+  106  du -a | sort -hr
+  107  sudo du -a | sort -hr | head -10
+  108  du -a
+  109  du -a | head -10
+  110  du -a | sort -hr | grep -v / | head -10
+  111  last
+  112  man last
+  113  history
+  114  history 15
+```
+
 ## 14.  What is the difference between the commands less and more?
+
+~~From `less` manpage: `less - opposite of more`.~~
+
+`more` allows scrolling downwards, while `less` has better scrolling support in both directions. `less` is a newer, more feature rich version of `more` including features such as searching and jumping between lines.

@@ -814,12 +814,52 @@ drwxr-xr-x  <span class="token number">2</span> root      root              <spa
 /home/ubuntu/.sudo_as_admin_successful
 </pre><h2 class="mume-header" id="-11-what-is-the-command-or-commands-used-to-list-the-files-in-varlog-in-order-of-their-size-list-the-command-and-its-output">11. What is the command or commands used to list the files in /var/log in order of their size? List the command and its output.</h2>
 
-<h2 class="mume-header" id="-12-what-is-the-command-or-commands-used-to-list-the-top-10-file-who-use-the-most-disk-space-what-is-this-commands-and-show-its-output">12. What is the command or commands used to list the top 10 file who use the most disk space? What is this command(s) and show its output?</h2>
+<p>Using <code>ls</code>:</p>
+<ul>
+<li><code>-p</code> appends <code>/</code> to directories (to filter them out using <code>grep</code>).</li>
+<li><code>-l</code> to display log listing format (to see size).</li>
+<li><code>-S</code> to list the files by size.</li>
+<li><code>-h</code> to display size in human-readable format (optional).</li>
+</ul>
+<p>Piped to <code>grep</code> with <code>-v</code> to select lines that do not contain <code>/</code> to print files only.</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">ls</span> -plSh /var/log <span class="token operator">|</span> <span class="token function">grep</span> -v /
+total 440K
+-rw-rw-r--  <span class="token number">1</span> root      utmp            290K Feb <span class="token number">11</span> <span class="token number">15</span>:12 lastlog
+-rw-r-----  <span class="token number">1</span> syslog    adm             120K Feb <span class="token number">11</span> <span class="token number">22</span>:47 syslog
+-rw-r--r--  <span class="token number">1</span> syslog    adm             108K Feb  <span class="token number">8</span> <span class="token number">20</span>:43 cloud-init.log
+-rw-r-----  <span class="token number">1</span> syslog    adm              45K Feb  <span class="token number">9</span> <span class="token number">12</span>:00 kern.log
+-rw-r--r--  <span class="token number">1</span> root      root             36K Feb <span class="token number">10</span> 06:51 dpkg.log
+-rw-r-----  <span class="token number">1</span> root      adm              33K Feb  <span class="token number">8</span> <span class="token number">20</span>:43 <span class="token function">dmesg</span>
+-rw-r-----  <span class="token number">1</span> syslog    adm              27K Feb <span class="token number">11</span> <span class="token number">22</span>:47 auth.log
+-rw-rw-r--  <span class="token number">1</span> root      utmp            <span class="token number">7</span>.5K Feb <span class="token number">11</span> <span class="token number">15</span>:12 wtmp
+-rw-r--r--  <span class="token number">1</span> root      root            <span class="token number">6</span>.8K Feb <span class="token number">10</span> 06:50 alternatives.log
+-rw-r-----  <span class="token number">1</span> root      adm             <span class="token number">4</span>.7K Feb  <span class="token number">8</span> <span class="token number">20</span>:43 cloud-init-output.log
+-rw-r--r--  <span class="token number">1</span> root      root            <span class="token number">2</span>.6K Feb <span class="token number">11</span> <span class="token number">22</span>:44 ubuntu-advantage-timer.log
+-rw-rw----  <span class="token number">1</span> root      utmp               <span class="token number">0</span> Jan  <span class="token number">6</span> <span class="token number">18</span>:15 btmp
+</pre><h2 class="mume-header" id="-12-what-is-the-command-or-commands-used-to-list-the-top-10-file-who-use-the-most-disk-space-what-is-this-commands-and-show-its-output">12. What is the command or commands used to list the top 10 file who use the most disk space? What is this command(s) and show its output?</h2>
 
 <h2 class="mume-header" id="-13--what-is-the-command-that-will-show-you-the-last-15-commands-you-have-typed-list-the-command-and-its-output">13.  What is the command that will show you the last 15 commands you have typed? List the command and its output.</h2>
 
-<h2 class="mume-header" id="-14--what-is-the-difference-between-the-commands-less-and-more">14.  What is the difference between the commands less and more?</h2>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">history</span> <span class="token number">15</span>
+  <span class="token number">100</span>  <span class="token function">man</span> <span class="token function">grep</span>
+  <span class="token number">101</span>  <span class="token function">man</span> <span class="token function">du</span>
+  <span class="token number">102</span>  <span class="token function">du</span> -a
+  <span class="token number">103</span>  <span class="token function">man</span> <span class="token function">sort</span>
+  <span class="token number">104</span>  <span class="token function">du</span> -a <span class="token operator">|</span> <span class="token function">sort</span> -h <span class="token operator">|</span> <span class="token function">head</span> -10
+  <span class="token number">105</span>  <span class="token function">du</span> -a <span class="token operator">|</span> <span class="token function">sort</span> -hr <span class="token operator">|</span> <span class="token function">head</span> -10
+  <span class="token number">106</span>  <span class="token function">du</span> -a <span class="token operator">|</span> <span class="token function">sort</span> -hr
+  <span class="token number">107</span>  <span class="token function">sudo</span> <span class="token function">du</span> -a <span class="token operator">|</span> <span class="token function">sort</span> -hr <span class="token operator">|</span> <span class="token function">head</span> -10
+  <span class="token number">108</span>  <span class="token function">du</span> -a
+  <span class="token number">109</span>  <span class="token function">du</span> -a <span class="token operator">|</span> <span class="token function">head</span> -10
+  <span class="token number">110</span>  <span class="token function">du</span> -a <span class="token operator">|</span> <span class="token function">sort</span> -hr <span class="token operator">|</span> <span class="token function">grep</span> -v / <span class="token operator">|</span> <span class="token function">head</span> -10
+  <span class="token number">111</span>  last
+  <span class="token number">112</span>  <span class="token function">man</span> last
+  <span class="token number">113</span>  <span class="token function">history</span>
+  <span class="token number">114</span>  <span class="token function">history</span> <span class="token number">15</span>
+</pre><h2 class="mume-header" id="-14--what-is-the-difference-between-the-commands-less-and-more">14.  What is the difference between the commands less and more?</h2>
 
+<p><s>From <code>less</code> manpage: <code>less - opposite of more</code>.</s></p>
+<p><code>more</code> allows scrolling downwards, while <code>less</code> has better scrolling support in both directions. <code>less</code> is a newer, more feature rich version of <code>more</code> including features such as searching and jumping between lines.</p>
 
       </div>
       <div class="md-sidebar-toc">
