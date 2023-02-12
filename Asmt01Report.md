@@ -223,6 +223,33 @@ total 440K
 
 ## 12. What is the command or commands used to list the top 10 file who use the most disk space? What is this command(s) and show its output?
 
+1. Using `find ~`, searches all directories recursively from the home folder:
+   * `-type -f` filters for regular files only.
+   * `-print0` prints the actual filename to be passed on to `du`.
+
+2. Using `du` to anaylze disk usage:
+   * `-a` to include all files.
+   * `-h` to display size in human-readable format (optional).
+   * `--files0-from=-` to take filenames from the `find` result.
+
+3. `sort` with options:
+   * `-h` to sort the (human-readable) file sizes.
+   * `-r` to sort in descending order.
+
+4. Finally, `head -10` to print the first ten items.
+
+```sh
+ubuntu@primary:~$ find ~ -type f -print0 | du -ah --files0-from=- | sort -hr | head -10
+4.0K    /home/ubuntu/.ssh/authorized_keys
+4.0K    /home/ubuntu/.profile
+4.0K    /home/ubuntu/.lesshst
+4.0K    /home/ubuntu/.bashrc
+4.0K    /home/ubuntu/.bash_logout
+4.0K    /home/ubuntu/.bash_history
+0       /home/ubuntu/.sudo_as_admin_successful
+0       /home/ubuntu/.cache/motd.legal-displayed
+```
+
 ## 13.  What is the command that will show you the last 15 commands you have typed? List the command and its output.
 
 ```sh
