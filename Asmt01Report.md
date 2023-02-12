@@ -99,7 +99,13 @@ Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: SPCR 0x000000007BF7FF98 000
 
 ## 6. What is the command or commands that will show you all the login attempts for your username? Please write the commands and copy the output.
 
+The `-u` argument specifies the user. This user's name is `ubuntu`.
 
+```sh
+ubuntu@primary:~$ lastlog -u ubuntu
+Username         Port     From             Latest
+ubuntu           pts/0    192.168.64.1     Sat Feb 11 15:12:07 -0800 2023
+```
 
 ## 7. Using the dmesg command, show only the messages relating to warnings and errors. Also ensure the output is using a human readable time format. To verify that only error and warning messages are being show what option of dmesg would you use? Show both commands that were used.
 
