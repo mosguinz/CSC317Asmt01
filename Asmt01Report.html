@@ -751,11 +751,11 @@ ubuntu           pts/0    <span class="token number">192.168</span>.64.1     Sat
 </pre><h2 class="mume-header" id="-7-using-the-dmesg-command-show-only-the-messages-relating-to-warnings-and-errors-also-ensure-the-output-is-using-a-human-readable-time-format-to-verify-that-only-error-and-warning-messages-are-being-show-what-option-of-dmesg-would-you-use-show-both-commands-that-were-used">7. Using the dmesg command, show only the messages relating to warnings and errors. Also ensure the output is using a human readable time format. To verify that only error and warning messages are being show what option of dmesg would you use? Show both commands that were used.</h2>
 
 <ul>
-<li><code>-H</code> to to enable human-readable input.</li>
-<li><code>-x</code> to &#x201C;verify that only error and warning messages are being [shown]&#x201D;</li>
+<li><code>-H</code> to to enable human-readable output.</li>
+<li><code>-x</code> to &#x201C;verify that only error and warning messages are being [shown].&#x201D;</li>
 <li><code>-l</code> with argument <code>warn,err</code> to &#x201C;show only the messages relating to warnings and errors.&#x201D;</li>
 </ul>
-<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">sudo</span> <span class="token function">dmesg</span> -H -x -l warn,err
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">sudo</span> <span class="token function">dmesg</span> -Hx -l warn,err
 kern  :warn  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>Feb <span class="token number">9</span> <span class="token number">18</span>:45<span class="token punctuation">]</span> ACPI: SRAT not present
 kern  :warn  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>  +0.000000<span class="token punctuation">]</span> KASLR disabled due to lack of seed
 kern  :warn  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>  +0.123766<span class="token punctuation">]</span> SPI driver altr_a10sr has no spi_device_id <span class="token keyword keyword-for">for</span> altr,a10sr
@@ -769,8 +769,8 @@ kern  :warn  <span class="token builtin class-name">:</span> <span class="token 
 kern  :warn  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span> +25.082931<span class="token punctuation">]</span> kauditd_printk_skb: <span class="token number">19</span> callbacks suppressed
 kern  :warn  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>Feb10 01:31<span class="token punctuation">]</span> kauditd_printk_skb: <span class="token number">24</span> callbacks suppressed
 kern  :warn  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>Feb10 08:48<span class="token punctuation">]</span> hrtimer: interrupt took <span class="token number">40848802</span> ns
-</pre><p>Example without the <code>-l</code> argument to specify level. First few lines shows that the logs are of <code>info</code> and <code>notice</code> levels.</p>
-<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">sudo</span> <span class="token function">dmesg</span> -H -x
+</pre><p>Example without the <code>-l</code> argument to specify level. First few lines shows that the logs are of <code>info</code> and <code>notice</code> levels. Output truncated for brevity.</p>
+<pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">sudo</span> <span class="token function">dmesg</span> -Hx
 kern  :info  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>Feb <span class="token number">9</span> <span class="token number">18</span>:45<span class="token punctuation">]</span> Booting Linux on physical CPU 0x0000000000 <span class="token punctuation">[</span>0x410fd083<span class="token punctuation">]</span>
 kern  :notice: <span class="token punctuation">[</span>  +0.000000<span class="token punctuation">]</span> Linux version <span class="token number">5.15</span>.0-57-generic <span class="token punctuation">(</span>buildd@bos02-arm64-057<span class="token punctuation">)</span> <span class="token punctuation">(</span>gcc <span class="token punctuation">(</span>Ubuntu <span class="token number">11.3</span>.0-1ubuntu1~22.04<span class="token punctuation">)</span> <span class="token number">11.3</span>.0, GNU ld <span class="token punctuation">(</span>GNU Binutils<span class="token operator">&gt;</span>
 kern  :info  <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>  +0.000000<span class="token punctuation">]</span> efi: EFI v2.70 by EDK II

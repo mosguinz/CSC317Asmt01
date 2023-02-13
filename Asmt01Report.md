@@ -109,12 +109,12 @@ ubuntu           pts/0    192.168.64.1     Sat Feb 11 15:12:07 -0800 2023
 
 ## 7. Using the dmesg command, show only the messages relating to warnings and errors. Also ensure the output is using a human readable time format. To verify that only error and warning messages are being show what option of dmesg would you use? Show both commands that were used.
 
-* `-H` to to enable human-readable input.
-* `-x` to "verify that only error and warning messages are being [shown]"
+* `-H` to to enable human-readable output.
+* `-x` to "verify that only error and warning messages are being [shown]."
 * `-l` with argument `warn,err` to "show only the messages relating to warnings and errors."
 
 ```sh
-ubuntu@primary:~$ sudo dmesg -H -x -l warn,err
+ubuntu@primary:~$ sudo dmesg -Hx -l warn,err
 kern  :warn  : [Feb 9 18:45] ACPI: SRAT not present
 kern  :warn  : [  +0.000000] KASLR disabled due to lack of seed
 kern  :warn  : [  +0.123766] SPI driver altr_a10sr has no spi_device_id for altr,a10sr
@@ -130,10 +130,10 @@ kern  :warn  : [Feb10 01:31] kauditd_printk_skb: 24 callbacks suppressed
 kern  :warn  : [Feb10 08:48] hrtimer: interrupt took 40848802 ns
 ```
 
-Example without the `-l` argument to specify level. First few lines shows that the logs are of `info` and `notice` levels.
+Example without the `-l` argument to specify level. First few lines shows that the logs are of `info` and `notice` levels. Output truncated for brevity.
 
 ```sh
-ubuntu@primary:~$ sudo dmesg -H -x
+ubuntu@primary:~$ sudo dmesg -Hx
 kern  :info  : [Feb 9 18:45] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
 kern  :notice: [  +0.000000] Linux version 5.15.0-57-generic (buildd@bos02-arm64-057) (gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils>
 kern  :info  : [  +0.000000] efi: EFI v2.70 by EDK II
