@@ -79,7 +79,7 @@ system stores system logs.
 b. Note, WSL2 may not have a kern.log file at all.
 
 ```sh
-ubuntu@primary:~$ tail -15 /var/log/kern.log.1
+ubuntu@primary:~$ tail -15 /var/log/kern.log
 Feb 11 23:56:12 primary kernel: [    5.146678] audit: type=1400 audit(1676188568.472:15): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/17885/usr/lib/snapd/snap-confine" pid=542 comm="apparmor_parser"
 Feb 11 23:56:12 primary kernel: [    5.146681] audit: type=1400 audit(1676188568.472:16): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/17885/usr/lib/snapd/snap-confine//mount-namespace-capture-helper" pid=542 comm="apparmor_parser"
 Feb 11 23:56:12 primary kernel: [    5.155333] audit: type=1400 audit(1676188568.484:17): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/17954/usr/lib/snapd/snap-confine" pid=543 comm="apparmor_parser"
