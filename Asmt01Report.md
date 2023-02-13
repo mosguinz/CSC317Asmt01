@@ -237,6 +237,9 @@ total 440K
 
 4. Finally, `head -10` to print the first ten items.
 
+> **Note**
+> Virtual disk was dismounted prior to running this command. Searching every single file was taking forever. `head -10` is redundant here because it only returned eight lines.
+
 ```sh
 ubuntu@primary:~$ find ~ -type f -print0 | du -ah --files0-from=- | sort -hr | head -10
 4.0K    /home/ubuntu/.ssh/authorized_keys

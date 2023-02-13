@@ -864,6 +864,10 @@ total 440K
 <p>Finally, <code>head -10</code> to print the first ten items.</p>
 </li>
 </ol>
+<blockquote>
+<p><strong>Note</strong><br>
+Virtual disk was dismounted prior to running this command. Searching every single file was taking forever. <code>head -10</code> is redundant here because it only returned eight lines.</p>
+</blockquote>
 <pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">find</span> ~ -type f -print0 <span class="token operator">|</span> <span class="token function">du</span> -ah --files0-from<span class="token operator">=</span>- <span class="token operator">|</span> <span class="token function">sort</span> -hr <span class="token operator">|</span> <span class="token function">head</span> -10
 <span class="token number">4</span>.0K    /home/ubuntu/.ssh/authorized_keys
 <span class="token number">4</span>.0K    /home/ubuntu/.profile
