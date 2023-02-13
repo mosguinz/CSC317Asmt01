@@ -108,7 +108,7 @@ ubuntu           pts/0    192.168.64.1     Sat Feb 11 15:12:07 -0800 2023
 
 ## 7. Using the dmesg command, show only the messages relating to warnings and errors. Also ensure the output is using a human readable time format. To verify that only error and warning messages are being show what option of dmesg would you use? Show both commands that were used.
 
-* `-H` to to enable human-readable output.
+* `-H` to enable human-readable output.
 * `-x` to "verify that only error and warning messages are being [shown]."
 * `-l` with argument `warn,err` to "show only the messages relating to warnings and errors."
 
