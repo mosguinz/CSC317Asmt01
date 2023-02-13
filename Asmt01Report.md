@@ -79,22 +79,22 @@ system stores system logs.
 b. Note, WSL2 may not have a kern.log file at all.
 
 ```sh
-ubuntu@primary:~$ head -15 /var/log/kern.log
-Feb  9 04:43:15 primary kernel: [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
-Feb  9 04:43:15 primary kernel: [    0.000000] Linux version 5.15.0-57-generic (buildd@bos02-arm64-057) (gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #63-Ubuntu SMP Thu Nov 24 13:48:31 UTC 2022 (Ubuntu 5.15.0-57.63-generic 5.15.74)
-Feb  9 04:43:15 primary kernel: [    0.000000] efi: EFI v2.70 by EDK II
-Feb  9 04:43:15 primary kernel: [    0.000000] efi: SMBIOS 3.0=0x7f700000 MEMATTR=0x7cf05698 ACPI 2.0=0x7bf70018 MOKvar=0x7ceef000 MEMRESERVE=0x7c371118
-Feb  9 04:43:15 primary kernel: [    0.000000] secureboot: Secure boot disabled
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: Early table checksum verification disabled
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: RSDP 0x000000007BF70018 000024 (v02 BOCHS )
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: XSDT 0x000000007BF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: FACP 0x000000007BF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: DSDT 0x000000007BF77518 00141A (v02 BOCHS  BXPC     00000001 BXPC 00000001)
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: APIC 0x000000007BF7FC18 0000A8 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: PPTT 0x000000007BF7FD18 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: GTDT 0x000000007BF7D898 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: MCFG 0x000000007BF7FE18 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
-Feb  9 04:43:15 primary kernel: [    0.000000] ACPI: SPCR 0x000000007BF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+ubuntu@primary:~$ tail -15 /var/log/kern.log.1
+Feb 11 23:56:12 primary kernel: [    5.146678] audit: type=1400 audit(1676188568.472:15): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/17885/usr/lib/snapd/snap-confine" pid=542 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.146681] audit: type=1400 audit(1676188568.472:16): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/17885/usr/lib/snapd/snap-confine//mount-namespace-capture-helper" pid=542 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.155333] audit: type=1400 audit(1676188568.484:17): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/17954/usr/lib/snapd/snap-confine" pid=543 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.155338] audit: type=1400 audit(1676188568.484:18): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/17954/usr/lib/snapd/snap-confine//mount-namespace-capture-helper" pid=543 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.158835] audit: type=1400 audit(1676188568.484:19): apparmor="STATUS" operation="profile_load" profile="unconfined" name="snap-update-ns.lxd" pid=544 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.162826] audit: type=1400 audit(1676188568.488:20): apparmor="STATUS" operation="profile_load" profile="unconfined" name="snap-update-ns.multipass-sshfs" pid=545 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.173914] audit: type=1400 audit(1676188568.500:21): apparmor="STATUS" operation="profile_load" profile="unconfined" name="snap.lxd.activate" pid=546 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.183175] audit: type=1400 audit(1676188568.512:22): apparmor="STATUS" operation="profile_load" profile="unconfined" name="snap.lxd.benchmark" pid=547 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.191085] audit: type=1400 audit(1676188568.520:23): apparmor="STATUS" operation="profile_load" profile="unconfined" name="snap.lxd.buginfo" pid=548 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    5.217079] audit: type=1400 audit(1676188568.544:24): apparmor="STATUS" operation="profile_load" profile="unconfined" name="snap.lxd.check-kernel" pid=549 comm="apparmor_parser"
+Feb 11 23:56:12 primary kernel: [    7.323093] random: crng init done
+Feb 11 23:56:12 primary kernel: [    7.323107] random: 241 urandom warning(s) missed due to ratelimiting
+Feb 11 23:56:12 primary kernel: [    7.417164] ISO 9660 Extensions: Microsoft Joliet Level 3
+Feb 11 23:56:12 primary kernel: [    7.417279] ISOFS: changing to secondary root
+Feb 11 23:56:15 primary kernel: [   11.773401] loop8: detected capacity change from 0 to 8
 ```
 
 ## 6. What is the command or commands that will show you all the login attempts for your username? Please write the commands and copy the output.
