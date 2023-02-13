@@ -5,8 +5,6 @@ print_background: true
 puppeteer:
     format: "Letter"
     timeout: 3000
-chrome:
-    printBackground: false
 ---
 
 # Assignment 01
