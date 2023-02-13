@@ -74,8 +74,7 @@ root,daemon,bin,sys,sync,games,man,lp,mail,news,uucp,proxy,www-data,backup,list,
 ```
 
 ## 5. What is the command or commands that will show you the last 15 lines of the /var/log/kern.log file? Please write the commands and copy the output.
-a. If your system does not have a kern.log, simply print which ever file in your
-system stores system logs.
+a. If your system does not have a kern.log, simply print which ever file in your system stores system logs.
 b. Note, WSL2 may not have a kern.log file at all.
 
 ```sh
