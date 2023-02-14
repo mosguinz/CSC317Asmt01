@@ -66,14 +66,14 @@ ubuntu
 lxd
 ```
 
-Normal users only, by filtering account whose user ID is equal to or greater than 1,000:
+Non-system users only, by filtering account whose user ID is equal to or greater than 1,000:
 ```sh
 ubuntu@primary:~$ awk -F: '$3 >= 1000 {print $1}' /etc/passwd
 nobody
 ubuntu
 ```
 
-Without `nobody`:
+Same as above but without `nobody`:
 ```sh
 ubuntu@primary:~$ awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd
 ubuntu

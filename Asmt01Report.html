@@ -539,11 +539,11 @@ landscape
 fwupd-refresh
 ubuntu
 lxd
-</pre><p>Normal users only, by filtering account whose user ID is equal to or greater than 1,000:</p>
+</pre><p>Non-system users only, by filtering account whose user ID is equal to or greater than 1,000:</p>
 <pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">awk</span> -F: <span class="token string">&apos;$3 &gt;= 1000 {print $1}&apos;</span> /etc/passwd
 nobody
 ubuntu
-</pre><p>Without <code>nobody</code>:</p>
+</pre><p>Same as above but without <code>nobody</code>:</p>
 <pre data-role="codeBlock" data-info="sh" class="language-bash">ubuntu@primary:~$ <span class="token function">awk</span> -F: <span class="token string">&apos;$3 &gt;= 1000 &amp;&amp; $1 != &quot;nobody&quot; {print $1}&apos;</span> /etc/passwd
 ubuntu
 </pre><h2 class="mume-header" id="-4-using-your-answer-from-the-previous-question-what-would-be-the-command-or-commands-to-show-the-the-list-of-users-as-a-comma-separated-list">4. Using your answer from the previous question, what would be the command or commands to show the the list of users as a comma separated list.</h2>
