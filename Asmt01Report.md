@@ -25,6 +25,10 @@ ubuntu
 
 ## 3. What is the Linux command or commands to list all user accounts on a Linux system? ONLY user account names should be shown!
 
+Depending on what is meant by "only user account names," there are a couple of approaches.
+
+All user account names:
+
 ```sh
 ubuntu@primary:~$ awk -F: '{print $1}' /etc/passwd
 root
@@ -60,6 +64,19 @@ landscape
 fwupd-refresh
 ubuntu
 lxd
+```
+
+Normal users only, by filtering account whose user ID is equal to or greater than 1,000:
+```sh
+ubuntu@primary:~$ awk -F: '$3 >= 1000 {print $1}' /etc/passwd
+nobody
+ubuntu
+```
+
+Without `nobody`:
+```sh
+ubuntu@primary:~$ awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd
+ubuntu
 ```
 
 ## 4. Using your answer from the previous question, what would be the command or commands to show the the list of users as a comma separated list.
